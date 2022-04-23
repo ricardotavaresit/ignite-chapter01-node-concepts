@@ -71,7 +71,22 @@ app.post('/todos', checksExistsUserAccount, (request, response) => {
 });
 
 app.put('/todos/:id', checksExistsUserAccount, (request, response) => {
-  // Complete aqui
+
+  const { id } = request.params;
+  const { user } = request;
+  const { title, deadline } = request.body;
+
+  const toDoAlreadyExists = user.todos.find( (todo) => todo.id === id );
+
+  if( !toDoAlreadyExists ){
+    return response.status(404).json({error:`Todo id:${id} doesn't exist.`});
+  }
+
+  toDoAlreadyExists.title = title;
+  toDoAlreadyExists.deadline = new Date(deadline);  
+
+  return response.status(200).json(toDoAlreadyExists);
+ 
 });
 
 app.patch('/todos/:id/done', checksExistsUserAccount, (request, response) => {
