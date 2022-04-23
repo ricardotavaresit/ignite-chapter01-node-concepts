@@ -13,14 +13,12 @@
 ## Technologies used
 
 Tecnologies:
-
 - NodeJS;
 - Express;
 - JavaScript;
 - Jest;
 
 Dependencies:
-
 - Express;
 - uuid;
 - cors;
