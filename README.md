@@ -6,16 +6,21 @@
 
 - Start the server: `npm run start` or `yarn start`
 
+- Run jest tests: `npm run test` or `yarn test`
+
 - Data are on: `localhost:3333`
 
 ## Technologies used
 
 Tecnologies:
+
 - NodeJS;
 - Express;
 - JavaScript;
+- Jest;
 
 Dependencies:
+
 - Express;
 - uuid;
 - cors;
