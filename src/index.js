@@ -90,7 +90,18 @@ app.put('/todos/:id', checksExistsUserAccount, (request, response) => {
 });
 
 app.patch('/todos/:id/done', checksExistsUserAccount, (request, response) => {
-  // Complete aqui
+  const { id } = request.params;
+  const { user } = request;
+
+  const toDoAlreadyExists = user.todos.find( (todo) => todo.id === id );
+
+  if( !toDoAlreadyExists ){
+    return response.status(404).json({error:`Todo id:${id} doesn't exist.`});
+  }
+
+  toDoAlreadyExists.done = true;
+
+  return response.status(200).json(toDoAlreadyExists);
 });
 
 app.delete('/todos/:id', checksExistsUserAccount, (request, response) => {
